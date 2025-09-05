@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace stock_finance_api.Models;
-
+[Table("Stocks")]
 public class Stock
 {
     public int Id { get; set; }
@@ -15,4 +15,5 @@ public class Stock
     public long MarketCap { get; set; }
 
     public List<Comment> Comments { get; set; } = new List<Comment>();
+    public List<Portfolio> Portfolios { get; set; } = new List<Portfolio>();
 }

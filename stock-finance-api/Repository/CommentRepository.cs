@@ -37,12 +37,12 @@ namespace stock_finance_api.Repository
 
         public async Task<List<Comment>> GetAllAsync()
         {
-           return await _context.Comments.ToListAsync();
+           return await _context.Comments.Include(a => a.AppUser).ToListAsync();
         }
 
         public async Task<Comment?> GetByIdAsync(int id)
         {
-            var comment = await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            var comment = await _context.Comments.Include(a => a.AppUser).FirstOrDefaultAsync(c => c.Id == id);
             return comment;
         }
 
